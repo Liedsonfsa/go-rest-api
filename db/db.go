@@ -8,12 +8,16 @@ import (
 
 var DB *sql.DB
 
-func InitDB() {
-	DB, err := sql.Open("mysql", "root:liedsonfsa@/rest_api?charset=utf8&parseTime=True&loc=Local")
+func InitDB() (*sql.DB, error){
+	db, err := sql.Open("mysql", "root:liedsonfsa@/rest_api?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
-	DB.SetMaxOpenConns(10)
-	DB.SetMaxIdleConns(5)
+	if err = db.Ping(); err != nil {
+		db.Close()
+		return nil, err
+	}
+
+	return db, nil
 }
