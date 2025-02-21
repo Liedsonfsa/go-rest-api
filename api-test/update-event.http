@@ -1,0 +1,9 @@
+PUT http://localhost:8080/events/1
+content-type: application/json
+
+{
+    "name": "rinha de backend",
+    "description": "participar da rinha de backend",
+    "location": "em casa",
+    "dateTime": "2025-03-08T15:30:00.000Z"
+}

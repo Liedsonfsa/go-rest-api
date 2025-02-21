@@ -37,6 +37,7 @@ func (e *Event) Save() error {
 
 func GetAllEvents() ([]Event, error) {
 	query := "SELECT * FROM events"
+
 	rows, err := db.DB.Query(query)
 	if err != nil {
 		return nil, err
@@ -60,6 +61,7 @@ func GetAllEvents() ([]Event, error) {
 
 func GetEventByID(id int64) (*Event, error) {
 	query := "SELECT event_id, event_name, event_description, event_location, event_dateTime, user_id FROM events WHERE event_id = ?"
+	
 	row, err := db.DB.Query(query, id)
 	if err != nil {
 		return nil, err
@@ -77,4 +79,18 @@ func GetEventByID(id int64) (*Event, error) {
 	}
 
 	return nil, errors.New("could not fetch event")
+}
+
+func (event Event) Update() error {
+	query := "UPDATE events SET event_name = ?, event_description = ?, event_location = ?, event_dateTime = ?  WHERE event_id = ?"
+	
+	stmt, err := db.DB.Prepare(query)
+	if err != nil {
+		return err
+	}
+	defer stmt.Close()
+
+	_, err = stmt.Exec(event.Name, event.Description, event.Location, event.DateTime, event.ID)
+
+	return err
 }
