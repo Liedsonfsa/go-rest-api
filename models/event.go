@@ -1,6 +1,7 @@
 package models
 
 import (
+	"errors"
 	"rest-api/db"
 	"time"
 )
@@ -13,8 +14,6 @@ type Event struct {
 	DateTime    time.Time	`binding:"required"`
 	UserID		int
 }
-
-var events = []Event{}
 
 func (e *Event) Save() error {
 	query := "INSERT INTO events (event_name, event_description, event_location, event_dateTime, user_id) VALUES (?, ?, ?, ?, ?)"
@@ -57,4 +56,25 @@ func GetAllEvents() ([]Event, error) {
 	}
 
 	return events, nil 
+}
+
+func GetEventByID(id int64) (*Event, error) {
+	query := "SELECT event_id, event_name, event_description, event_location, event_dateTime, user_id FROM events WHERE event_id = ?"
+	row, err := db.DB.Query(query, id)
+	if err != nil {
+		return nil, err
+	}
+	defer row.Close()
+
+	var event Event
+
+	if row.Next() {
+		if err = row.Scan(&event.ID, &event.Name, &event.Description, &event.Location, &event.DateTime, &event.UserID); err != nil {
+			return nil, err
+		}
+
+		return &event, nil
+	}
+
+	return nil, errors.New("could not fetch event")
 }
