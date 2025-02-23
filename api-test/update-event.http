@@ -1,6 +1,8 @@
-PUT http://localhost:8080/events/4
+PUT http://localhost:8080/events/5
 content-type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InplY2FAZ21haWwuY29tIiwiZXhwIjoxNzQwMzM4NDI0LCJ1c2VySWQiOjN9.1419KaBaM-jUt99z448FVl1a-MEx3xjZg8VLnVBeTjY
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InplY2F1cnVidUBnbWFpbC5jb20iLCJleHAiOjE3NDAzNDIyOTEsInVzZXJJZCI6Mn0.n_eboIx8fJ7o1GT3ZM5am9i4cenIyXqaNklV-gFkdCU
+
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InplY2FAZ21haWwuY29tIiwiZXhwIjoxNzQwMzM4NDI0LCJ1c2VySWQiOjN9.1419KaBaM-jUt99z448FVl1a-MEx3xjZg8VLnVBeTjY
 
 {
     "name": "Jogo da copa",
