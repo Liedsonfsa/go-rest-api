@@ -1,6 +1,6 @@
 POST http://localhost:8080/events
 content-type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InplY2FAZ21haWwuY29tIiwiZXhwIjoxNzQwMzM4NDI0LCJ1c2VySWQiOjN9.1419KaBaM-jUt99z448FVl1a-MEx3xjZg8VLnVBeTjY
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InplY2FAZ21haWwuY29tIiwiZXhwIjoxNzQwMzQ0MTk2LCJ1c2VySWQiOjF9.FwIrY8I_jMfqdwVlssqmb4Bp8qUvBcLIE6eAmXHSaz0
 
 {
     "name": "Jogo da copa",
