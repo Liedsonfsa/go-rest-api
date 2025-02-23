@@ -1,9 +1,10 @@
 POST http://localhost:8080/events
 content-type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InplY2FAZ21haWwuY29tIiwiZXhwIjoxNzQwMzM4NDI0LCJ1c2VySWQiOjN9.1419KaBaM-jUt99z448FVl1a-MEx3xjZg8VLnVBeTjY
 
 {
-    "name": "Aula de Programação Competitiva",
-    "description": "Uma aula de programação competitiva com um programador do Google",
-    "location": "Google meet",
+    "name": "Teste de autorização",
+    "description": "é só um teste de autorização",
+    "location": "localhost",
     "dateTime": "2025-03-08T15:30:00.000Z"
 }

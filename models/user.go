@@ -7,12 +7,12 @@ import (
 )
 
 type User struct {
-	ID       int
+	ID       int64
 	Email    string `binding:"required"`
 	Password string `binding:"required"`
 }
 
-func (u User) Save() error {
+func (u *User) Save() error {
 	query := "INSERT INTO users(email, password) VALUES (?, ?)"
 
 	stmt, err := db.DB.Prepare(query)
@@ -31,13 +31,12 @@ func (u User) Save() error {
 		return err
 	}
 
-	userID, err := result.LastInsertId()
-	u.ID = int(userID)
+	u.ID, err = result.LastInsertId()
 
 	return err
 }
 
-func (u User) ValidateCredentials() error {
+func (u *User) ValidateCredentials() error {
 	query := "SELECT id, password FROM users WHERE email = ?"
 
 	var retrievedPassword string

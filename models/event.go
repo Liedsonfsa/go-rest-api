@@ -7,7 +7,7 @@ import (
 )
 
 type Event struct {
-	ID          int
+	ID          int64
 	Name        string		`binding:"required"`
 	Description string		`binding:"required"`
 	Location    string		`binding:"required"`
@@ -30,7 +30,7 @@ func (e *Event) Save() error {
 	}
 
 	id, err := result.LastInsertId()
-	e.ID = int(id)
+	e.ID = id
 
 	return err
 }
