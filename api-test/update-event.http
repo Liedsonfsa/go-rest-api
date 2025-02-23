@@ -1,9 +1,10 @@
-PUT http://localhost:8080/events/1
+PUT http://localhost:8080/events/4
 content-type: application/json
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InplY2FAZ21haWwuY29tIiwiZXhwIjoxNzQwMzM4NDI0LCJ1c2VySWQiOjN9.1419KaBaM-jUt99z448FVl1a-MEx3xjZg8VLnVBeTjY
 
 {
-    "name": "rinha de backend",
-    "description": "participar da rinha de backend",
-    "location": "em casa",
+    "name": "Jogo da copa",
+    "description": "Qualquer jogo aleatório da copa do mundo",
+    "location": "agora é na casa de um amigo meu de infância",
     "dateTime": "2025-03-08T15:30:00.000Z"
 }

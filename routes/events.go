@@ -1,9 +1,9 @@
 package routes
 
 import (
+	"fmt"
 	"net/http"
 	"rest-api/models"
-	"rest-api/utils"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -12,7 +12,7 @@ import (
 func getEvents(context *gin.Context) {
 	events, err := models.GetAllEvents()
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"error": "Could not fetch events."})
+		context.JSON(http.StatusInternalServerError, gin.H{"message": "Could not fetch events."})
 		return
 	}
 
@@ -29,7 +29,7 @@ func getEvent(context *gin.Context) {
 	event, err := models.GetEventByID(id)
 	
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"error": "Could not fetch event."})
+		context.JSON(http.StatusInternalServerError, gin.H{"message": "Could not fetch event."})
 		return
 	}
 
@@ -37,31 +37,20 @@ func getEvent(context *gin.Context) {
 }
 
 func createEvent(context *gin.Context) {
-	token := context.Request.Header.Get("Authorization")
-	if token == "" {
-		context.JSON(http.StatusUnauthorized, gin.H{"error": "Not authorized 1."})
-		return
-	}
-
-	userId, err := utils.VerifyToken(token)
-	if err != nil {
-		context.JSON(http.StatusUnauthorized, gin.H{"error": "Not authorized."})
-		return
-	}
-
 	var event models.Event
 
-	err = context.ShouldBindJSON(&event)
+	err := context.ShouldBindJSON(&event)
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"message": "Could not parse event id."})
 		return
 	}
-
-	event.UserID = userId
+	
+	event.UserID = context.GetInt64("userId")
 
 	err = event.Save()
+	fmt.Println(err)
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"error": "Could not create event."})
+		context.JSON(http.StatusInternalServerError, gin.H{"message": "Could not create event."})
 		return
 	}
 
@@ -93,7 +82,7 @@ func updateEvent(context *gin.Context) {
 
 	err = updatedEvent.Update()
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"error": "Could not update event."})
+		context.JSON(http.StatusInternalServerError, gin.H{"message": "Could not update event."})
 		return
 	}
 
