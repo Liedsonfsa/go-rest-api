@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Authenticate checks if the user is authenticated
 func Authenticate(context *gin.Context) {
 	token := context.Request.Header.Get("Authorization")
 	if token == "" {

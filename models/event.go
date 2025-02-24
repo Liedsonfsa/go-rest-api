@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+// Event represents the data of an event
 type Event struct {
 	ID          int64
 	Name        string		`binding:"required"`
@@ -15,6 +16,7 @@ type Event struct {
 	UserID		int64
 }
 
+// Save saves a new event to the database
 func (e *Event) Save() error {
 	query := "INSERT INTO events (event_name, event_description, event_location, event_dateTime, user_id) VALUES (?, ?, ?, ?, ?)"
 
@@ -35,6 +37,7 @@ func (e *Event) Save() error {
 	return err
 }
 
+// GetAllEvents get all stored events
 func GetAllEvents() ([]Event, error) {
 	query := "SELECT * FROM events"
 
@@ -59,6 +62,7 @@ func GetAllEvents() ([]Event, error) {
 	return events, nil 
 }
 
+// GetEventByID gets an event with a given id
 func GetEventByID(id int64) (*Event, error) {
 	query := "SELECT event_id, event_name, event_description, event_location, event_dateTime, user_id FROM events WHERE event_id = ?"
 	
@@ -81,6 +85,7 @@ func GetEventByID(id int64) (*Event, error) {
 	return nil, errors.New("could not fetch event")
 }
 
+// Update updates a given event
 func (event Event) Update() error {
 	query := "UPDATE events SET event_name = ?, event_description = ?, event_location = ?, event_dateTime = ?  WHERE event_id = ?"
 	
@@ -95,6 +100,7 @@ func (event Event) Update() error {
 	return err
 }
 
+// Delete remove a certain event
 func (event Event) Delete() error {
 	query := "DELETE FROM events WHERE event_id = ?"
 
@@ -108,6 +114,7 @@ func (event Event) Delete() error {
 	return err
 }
 
+// Register registers a user for an event
 func (e Event) Register(userId int64) error {
 	query := "INSERT INTO registrations (event_id, user_id) VALUES (?, ?)"
 
@@ -121,6 +128,7 @@ func (e Event) Register(userId int64) error {
 	return err
 }
 
+// CancelRegistration remove a user's record from an event
 func (e Event) CancelRegistration(userId int64) error {
 	query := "DELETE FROM registrations WHERE event_id = ? AND user_id = ?"
 

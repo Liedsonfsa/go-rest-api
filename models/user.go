@@ -6,12 +6,14 @@ import (
 	"rest-api/utils"
 )
 
+// User represents user data
 type User struct {
 	ID       int64
 	Email    string `binding:"required"`
 	Password string `binding:"required"`
 }
 
+// Save saves a new user in the database
 func (u *User) Save() error {
 	query := "INSERT INTO users(email, password) VALUES (?, ?)"
 
@@ -36,6 +38,7 @@ func (u *User) Save() error {
 	return err
 }
 
+// ValidateCredentials validates a user's credentials
 func (u *User) ValidateCredentials() error {
 	query := "SELECT id, password FROM users WHERE email = ?"
 

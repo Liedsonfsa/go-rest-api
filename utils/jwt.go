@@ -7,8 +7,10 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 )
 
+// SecretKey stores the security key of the signature method
 var SecretKey = ""
 
+// GenerateToken generate jwt token for user
 func GenerateToken(email string, userId int64) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"email": email,
@@ -19,6 +21,7 @@ func GenerateToken(email string, userId int64) (string, error) {
 	return token.SignedString([]byte(SecretKey))
 }
 
+// VerifyToken checks if the token the user is using is valid
 func VerifyToken(token string) (int64, error) {
 	parsedToken, err := jwt.Parse(token, func(token *jwt.Token) (interface{}, error) {
 		_, ok := token.Method.(*jwt.SigningMethodHMAC)

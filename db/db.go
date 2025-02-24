@@ -10,8 +10,10 @@ import (
 	"github.com/joho/godotenv"
 )
 
+// DB stores a pointer to the database
 var DB *sql.DB
 
+// InitDB establishes the connection to the database and loads the data that is in the environment variables
 func InitDB() (*sql.DB, error){
 	if err := godotenv.Load(); err != nil {
 		return nil, err

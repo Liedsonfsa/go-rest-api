@@ -1,10 +1,10 @@
 POST http://localhost:8080/events
 content-type: application/json
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InplY2FAZ21haWwuY29tIiwiZXhwIjoxNzQwMzQ0MTk2LCJ1c2VySWQiOjF9.FwIrY8I_jMfqdwVlssqmb4Bp8qUvBcLIE6eAmXHSaz0
+authorization: put the user token here
 
 {
-    "name": "Jogo da copa",
-    "description": "Qualquer jogo aleatório da copa do mundo",
-    "location": "qualquer bar aleatório",
-    "dateTime": "2025-03-08T15:30:00.000Z"
+    "name": "event creation test",
+    "description": "event creation test",
+    "location": "anywhere",
+    "dateTime": "2025-08-05T18:30:00.000Z"
 }

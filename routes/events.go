@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"fmt"
 	"net/http"
 	"rest-api/models"
 	"strconv"
@@ -48,7 +47,6 @@ func createEvent(context *gin.Context) {
 	event.UserID = context.GetInt64("userId")
 
 	err = event.Save()
-	fmt.Println(err)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"message": "Could not create event."})
 		return
