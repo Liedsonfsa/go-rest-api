@@ -1,34 +1,34 @@
-# Rest API in Go
+# Rest API in Go <img src="images/go-gopher-svgrepo-com.svg" width="20px">
 
 This is an API that is capable of managing events, thus being able to create, remove and update events. It is also possible to register users for events and remove a user's registration from an event.
 
 ## Routes
 
-```http
+```bash
 POST {host}/events      # creating a new event
 ```
-```http
+```bash
 GET {host}/events       # searching for all events
 ```
-```http
+```bash
 GET {host}/events/id    # searching for an event by id
 ```
-```http
+```bash
 PUT {host}/events/id    # updating a specific event
 ```
-```http
+```bash
 DELETE {host}/events/id   # deleting a specific event
 ```
-```http
+```bash
 POST {host}/signup      # registering a new user
 ```
-```http
+```bash
 POST {host}/login       # user login
 ```
-```http
+```bash
 POST {host}/events/id/register      # registering a user in a specific event
 ```
-```http
+```bash
 DELETE {host}/events/id/register    # deleting a user's record of a given event
 ```
 
