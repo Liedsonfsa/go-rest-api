@@ -23,7 +23,7 @@ DB_USER= # database user
 DB_PASSWORD= # database password
 ```
 
-## Rodando a API
+## Running the API
 ```go
 go run main.go
 ```
