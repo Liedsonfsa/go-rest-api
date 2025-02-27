@@ -2,6 +2,30 @@
 
 This is an API that is capable of managing events, thus being able to create, remove and update events. It is also possible to register users for events and remove a user's registration from an event.
 
+## Cloning and accessing the repository
+```bash
+git clone https://github.com/Liedsonfsa/go-rest-api.git
+cd go-rest-api
+```
+
+## Downloading dependencies
+```go
+go mod tidy
+```
+
+## Environment variables
+```bash
+SECRET_KEY= # secrete key for signing jwt tokens
+DB_NAME= # database name
+DB_USER= # database user
+DB_PASSWORD= # database password
+```
+
+## Rodando a API
+```go
+go run main.go
+```
+
 ## Routes that do not require authentication
 
 ```bash
