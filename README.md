@@ -14,6 +14,8 @@ go mod tidy
 ```
 
 ## Environment variables
+Create a .env file with the following variables
+
 ```bash
 SECRET_KEY= # secrete key for signing jwt tokens
 DB_NAME= # database name
