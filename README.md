@@ -10,7 +10,7 @@ cd go-rest-api
 
 ## Downloading dependencies
 ```go
-go mod tidy
+go mod downloading
 ```
 
 ## Environment variables
@@ -64,6 +64,14 @@ DELETE {host}/events/id/register    # deleting a user's record of a given event
 ```
 
 #### Examples of how routes are used are in the folder `/api-test`
+
+#### To perform requests using the files contained in the `/api-test` folder, the `REST Client` extension is required.
+
+<img src="images/rest-client.png">
+
+#### After installing the extension, open some test file and click `Send Request`
+
+<img src="images/send-request.png">
 
 ## Technologies
 
